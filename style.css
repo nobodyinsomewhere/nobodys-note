@@ -714,3 +714,261 @@ a:hover{
     grid-template-columns:1fr;
   }
 }
+/* ===== final polish + round player patch ===== */
+
+:root{
+  --ui-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+/* 小字、说明、辅助信息和标题层次做区分 */
+.site-subtitle,
+.eyebrow-tag,
+.eyebrow-text,
+.section-kicker,
+.section-desc,
+.latest-kicker,
+.latest-date,
+.meta-pill,
+.widget-kicker,
+.post-meta,
+.read-link,
+.back-link,
+.article-stamp,
+.article-date,
+.theme-corner select,
+.ghost-btn,
+.site-footer p,
+.track-sub,
+.player-status {
+  font-family: var(--ui-font);
+}
+
+.section-title,
+.latest-title,
+.post-title,
+.widget-title {
+  font-family: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", serif;
+}
+
+/* 主题切换器缩小，放角落，不抢视线 */
+.theme-corner{
+  top: 4px;
+  right: 4px;
+}
+
+.theme-corner select{
+  min-width: 108px;
+  width: auto;
+  padding: 7px 10px;
+  font-size: 11px;
+  border-radius: 999px;
+  opacity: .96;
+}
+
+/* 首页上下分区更明显 */
+.home-header{
+  margin-bottom: 30px;
+}
+
+.archive-section{
+  margin-top: 8px;
+}
+
+/* 文章列表每一篇更像目录项 */
+.post-card{
+  overflow: hidden;
+  padding-left: 22px;
+}
+
+.post-card::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--accent), transparent 76%);
+}
+
+.post-divider{
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+/* 圆盘播放器 */
+.player-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.player-status{
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.disc-wrap{
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.disc{
+  position: relative;
+  width: 170px;
+  height: 170px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at center, rgba(255,255,255,.15) 0 20%, transparent 21%),
+    radial-gradient(circle at center, rgba(255,255,255,.05) 0 58%, transparent 59%),
+    linear-gradient(135deg, rgba(30,30,35,.92), rgba(70,70,80,.84));
+  box-shadow:
+    inset 0 0 0 8px rgba(255,255,255,.04),
+    inset 0 0 0 18px rgba(255,255,255,.03),
+    0 16px 30px rgba(20,20,30,.16);
+  transition: transform .2s ease;
+}
+
+.disc-ring{
+  position: absolute;
+  inset: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.08);
+  pointer-events: none;
+}
+
+.cover-image{
+  width: 68%;
+  height: 68%;
+  object-fit: cover;
+  border-radius: 999px;
+  display: none;
+  box-shadow: 0 8px 18px rgba(0,0,0,.16);
+}
+
+.disc.has-cover .cover-image{
+  display: block;
+}
+
+.disc-center{
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.84);
+  box-shadow: 0 0 0 5px rgba(0,0,0,.14);
+}
+
+.disc.spinning{
+  animation: discSpin 12s linear infinite;
+}
+
+@keyframes discSpin{
+  from{ transform: rotate(0deg); }
+  to{ transform: rotate(360deg); }
+}
+
+.music-meta{
+  margin-top: 14px;
+  text-align: center;
+}
+
+.track-name{
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--title);
+  font-family: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", serif;
+}
+
+.track-sub{
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.player-controls{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.player-controls .ghost-btn{
+  flex: 1;
+  min-width: 78px;
+}
+
+/* 手机上别塌成一整坨，右边组件保留“块感” */
+@media (max-width: 920px){
+  .home-top{
+    grid-template-columns: 1fr;
+  }
+
+  .hero-right{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+  }
+}
+
+@media (max-width: 620px){
+  .site-wrap{
+    padding-top: 42px;
+  }
+
+  .hero-right{
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .widget-card{
+    min-height: 210px;
+  }
+
+  .site-subtitle{
+    font-size: 14px;
+  }
+
+  .hero-quote{
+    font-size: 15px;
+  }
+
+  .latest-title{
+    font-size: 20px;
+  }
+
+  .post-title{
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px){
+  .theme-corner{
+    top: -2px;
+    right: 0;
+  }
+
+  .theme-corner select{
+    min-width: 100px;
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  .hero-right{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .section-title{
+    font-size: 22px;
+  }
+
+  .article-body{
+    padding: 22px 16px;
+  }
+  }
