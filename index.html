@@ -48,19 +48,37 @@
         </div>
 
         <aside class="hero-right">
-          <section class="widget-card panel-surface player-widget">
-            <div class="widget-kicker">listening room</div>
-            <h3 class="widget-title">播放器预留</h3>
-            <p class="widget-text">
-              这里预留了一个很轻的听歌组件位置。  
-              以后如果你决定放本地音频，就可以直接把播放器接进来。
-            </p>
-            <div class="player-mock">
-              <span class="player-dot"></span>
-              <span class="player-line"></span>
-              <span class="player-mini">not playing</span>
-            </div>
-          </section>
+<section class="widget-card panel-surface player-widget">
+  <div class="widget-kicker">listening room</div>
+
+  <div class="player-head">
+    <div>
+      <h3 class="widget-title">静听</h3>
+      <p class="player-status" id="playerStatus">当前未播放。</p>
+    </div>
+  </div>
+
+  <div class="disc-wrap">
+    <div class="disc" id="disc">
+      <div class="disc-ring"></div>
+      <img id="coverImage" class="cover-image" src="" alt="cover" />
+      <div class="disc-center"></div>
+    </div>
+  </div>
+
+  <div class="music-meta">
+    <div class="track-name" id="trackName">请添加音乐文件</div>
+    <div class="track-sub" id="trackIndex">playlist 0 / 0</div>
+  </div>
+
+  <audio id="bgPlayer" preload="metadata"></audio>
+
+  <div class="player-controls">
+    <button id="prevTrackBtn" class="ghost-btn">上一首</button>
+    <button id="togglePlayBtn" class="ghost-btn">播放</button>
+    <button id="nextTrackBtn" class="ghost-btn">下一首</button>
+  </div>
+</section>
 
           <section class="widget-card panel-surface jump-widget">
             <div class="widget-kicker">turn the page</div>
