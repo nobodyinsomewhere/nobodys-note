@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="mist-cyan">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nobody's note</title>
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="site-wrap">
+    <header class="site-header">
+      <div class="header-main">
+        <h1 class="site-title">nobody's note</h1>
+        <p class="site-subtitle">一些零散的记录与沉默的想法。</p>
+      </div>
+
+      <div class="theme-switcher">
+        <label for="themeSelect">主题</label>
+        <select id="themeSelect">
+          <option value="moon-paper">月白纸页</option>
+          <option value="mist-cyan">雾青札记</option>
+          <option value="ink-night">墨蓝夜读</option>
+          <option value="parchment">羊皮卷</option>
+        </select>
+      </div>
+    </header>
+
+    <main class="home-main">
+      <section class="intro-block">
+        <p>
+          这里不试图解释太多，也不打算提供互动。  
+          只是把一些没有地方可放的句子、情绪、碎片和想法，安静地留在这里。
+        </p>
+      </section>
+
+      <section class="post-list" id="postList">
+        <article class="post-card">
+          <div class="post-meta">加载中…</div>
+          <h2 class="post-title">正在读取文章列表</h2>
+          <p class="post-excerpt">如果长时间停留在这里，请检查 posts.json 是否存在。</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>no comments, no noise, only notes.</p>
+    </footer>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
