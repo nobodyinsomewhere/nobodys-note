@@ -8,7 +8,19 @@
     "被记下来的东西，总比被说出口的更安静。",
     "有些情绪适合沉下去，再变成文字。"
   ];
-
+const PLAYLIST = [
+  {
+    title: "night fragment",
+    file: "./music/track1.mp3",
+    cover: "./music/cover1.jpg"
+  },
+  {
+    title: "violet margin",
+    file: "./music/track2.mp3",
+    cover: "./music/cover2.jpg"
+  }
+];
+  
   function $(id) {
     return document.getElementById(id);
   }
@@ -145,7 +157,113 @@
       });
     }
   }
+function initMusic() {
+  const audio = $("bgPlayer");
+  const trackName = $("trackName");
+  const trackIndex = $("trackIndex");
+  const playerStatus = $("playerStatus");
+  const prevBtn = $("prevTrackBtn");
+  const toggleBtn = $("togglePlayBtn");
+  const nextBtn = $("nextTrackBtn");
+  const disc = $("disc");
+  const coverImage = $("coverImage");
 
+  if (!audio || !trackName || !trackIndex || !playerStatus || !prevBtn || !toggleBtn || !nextBtn || !disc || !coverImage) {
+    return;
+  }
+
+  let currentIndex = 0;
+
+  function renderTrackInfo() {
+    const current = PLAYLIST[currentIndex];
+    trackName.textContent = current?.title || "请添加音乐文件";
+    trackIndex.textContent = `playlist ${currentIndex + 1} / ${PLAYLIST.length}`;
+
+    if (current?.cover) {
+      coverImage.src = current.cover;
+      disc.classList.add("has-cover");
+    } else {
+      coverImage.removeAttribute("src");
+      disc.classList.remove("has-cover");
+    }
+  }
+
+  function loadTrack(index) {
+    if (!PLAYLIST.length) return;
+    currentIndex = (index + PLAYLIST.length) % PLAYLIST.length;
+    audio.src = PLAYLIST[currentIndex].file;
+    renderTrackInfo();
+    playerStatus.textContent = "当前未播放。";
+    toggleBtn.textContent = "播放";
+    disc.classList.remove("spinning");
+  }
+
+  async function togglePlay() {
+    if (!PLAYLIST.length) return;
+
+    if (!audio.src) {
+      loadTrack(currentIndex);
+    }
+
+    if (audio.paused) {
+      try {
+        await audio.play();
+      } catch (err) {
+        console.error(err);
+        playerStatus.textContent = "浏览器拦截了播放，请再点一次。";
+      }
+    } else {
+      audio.pause();
+    }
+  }
+
+  prevBtn.addEventListener("click", () => {
+    loadTrack(currentIndex - 1);
+    audio.play().catch(() => {
+      playerStatus.textContent = "未自动播放，可手动点击播放。";
+    });
+  });
+
+  nextBtn.addEventListener("click", () => {
+    loadTrack(currentIndex + 1);
+    audio.play().catch(() => {
+      playerStatus.textContent = "未自动播放，可手动点击播放。";
+    });
+  });
+
+  toggleBtn.addEventListener("click", togglePlay);
+
+  audio.addEventListener("play", () => {
+    playerStatus.textContent = "正在播放。";
+    toggleBtn.textContent = "暂停";
+    disc.classList.add("spinning");
+  });
+
+  audio.addEventListener("pause", () => {
+    if (!audio.ended) {
+      playerStatus.textContent = "已暂停。";
+    }
+    toggleBtn.textContent = "播放";
+    disc.classList.remove("spinning");
+  });
+
+  audio.addEventListener("ended", () => {
+    disc.classList.remove("spinning");
+    loadTrack(currentIndex + 1);
+    audio.play().catch(() => {
+      playerStatus.textContent = "已切到下一首，请手动播放。";
+    });
+  });
+
+  audio.addEventListener("error", () => {
+    playerStatus.textContent = "未找到音乐文件，请在 music 文件夹里放入音频和封面。";
+    toggleBtn.textContent = "播放";
+    disc.classList.remove("spinning");
+  });
+
+  loadTrack(0);
+}
+  
   function renderArticlePager(posts) {
     const pager = $("articlePager");
     if (!pager || !Array.isArray(posts) || !posts.length) return;
@@ -233,10 +351,9 @@
     }
   }
 
-  async function init() {
-    initTheme();
-    await loadPosts();
-  }
-
-  init();
-})();
+async function init() {
+  initTheme();
+  initMusic();
+  await loadPosts();
+}
+  
