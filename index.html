@@ -8,65 +8,100 @@
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div class="site-wrap">
-    <header class="site-header v2-header">
-      <div class="header-topline">
-        <span class="topline-mark">卷一</span>
-        <span class="topline-text">private fragments / low profile archive</span>
+  <div class="site-wrap home-shell">
+    <header class="home-header">
+      <div class="theme-corner">
+        <select id="themeSelect" aria-label="主题切换">
+          <option value="moon-paper">月白纸页</option>
+          <option value="mist-cyan">雾青札记</option>
+          <option value="ink-night">墨蓝夜读</option>
+          <option value="parchment">羊皮卷</option>
+          <option value="violet-mist">鸢紫薄雾</option>
+        </select>
       </div>
 
-      <div class="hero-block">
-        <div class="hero-main">
+      <section class="home-top">
+        <div class="hero-left panel-surface">
+          <div class="eyebrow-row">
+            <span class="eyebrow-tag">archive</span>
+            <span class="eyebrow-text">quiet fragments / low profile record</span>
+          </div>
+
           <h1 class="site-title">nobody's note</h1>
           <p class="site-subtitle">一些零散的记录与沉默的想法。</p>
-          <p class="hero-intro">
-            这里不试图解释太多，也不提供互动。  
-            它更像一册安静摊开的手记，收纳一些未必重要、却也不想丢掉的东西。
-          </p>
+
+          <blockquote class="hero-quote" id="heroQuote">
+            写下来，不为解释，只为不忘。
+          </blockquote>
+
+          <div class="latest-card" id="latestPreview">
+            <div class="latest-kicker">最近更新</div>
+            <h2 class="latest-title">正在读取最新一篇</h2>
+            <p class="latest-date">--</p>
+            <p class="latest-excerpt">如果长时间停在这里，请检查 posts.json 是否存在。</p>
+          </div>
+
+          <div class="meta-strip" id="metaStrip">
+            <span class="meta-pill">收录：0 篇</span>
+            <span class="meta-pill">最近更新：--</span>
+          </div>
         </div>
 
-        <aside class="hero-side">
-          <div class="theme-panel">
-            <label for="themeSelect">主题</label>
-            <select id="themeSelect">
-              <option value="moon-paper">月白纸页</option>
-              <option value="mist-cyan">雾青札记</option>
-              <option value="ink-night">墨蓝夜读</option>
-              <option value="parchment">羊皮卷</option>
-              <option value="violet-mist">鸢紫薄雾</option>
-            </select>
-          </div>
-
-          <div class="side-note">
-            <div class="side-note-title">记事</div>
-            <p>
-              不追求热闹，也不着急解释。  
-              只是把仍然想留下的东西，一点一点放在这里。
+        <aside class="hero-right">
+          <section class="widget-card panel-surface player-widget">
+            <div class="widget-kicker">listening room</div>
+            <h3 class="widget-title">播放器预留</h3>
+            <p class="widget-text">
+              这里预留了一个很轻的听歌组件位置。  
+              以后如果你决定放本地音频，就可以直接把播放器接进来。
             </p>
-          </div>
+            <div class="player-mock">
+              <span class="player-dot"></span>
+              <span class="player-line"></span>
+              <span class="player-mini">not playing</span>
+            </div>
+          </section>
+
+          <section class="widget-card panel-surface jump-widget">
+            <div class="widget-kicker">turn the page</div>
+            <h3 class="widget-title">翻页入口</h3>
+            <p class="widget-text">
+              如果不想按顺序看，就从这里直接翻向最新一篇，或者随机读一篇。
+            </p>
+            <div class="jump-actions">
+              <button id="latestJumpBtn" class="ghost-btn">读最新一篇</button>
+              <button id="randomJumpBtn" class="ghost-btn">随机翻一篇</button>
+            </div>
+          </section>
         </aside>
-      </div>
+      </section>
     </header>
 
     <main class="home-main">
-      <section class="section-head">
-        <div>
-          <p class="section-kicker">archive</p>
-          <h2 class="section-title">最近的记录</h2>
+      <section class="archive-section panel-surface">
+        <div class="archive-head">
+          <div>
+            <p class="section-kicker">volume</p>
+            <h2 class="section-title">最近的记录</h2>
+          </div>
+          <p class="section-desc">这里不提供互动，只保留被写下来的部分。</p>
         </div>
-        <p class="section-desc">这些文字没有顺序，只是被安放在这里。</p>
-      </section>
 
-      <section class="post-list refined-list" id="postList">
-        <article class="post-card refined-card">
-          <div class="post-meta">加载中…</div>
-          <h2 class="post-title">正在读取文章列表</h2>
-          <p class="post-excerpt">如果长时间停留在这里，请检查 posts.json 是否存在。</p>
-        </article>
+        <section class="post-list refined-list" id="postList">
+          <article class="post-card">
+            <div class="post-card-head">
+              <span class="post-order">00</span>
+              <span class="post-meta">加载中…</span>
+            </div>
+            <div class="post-divider"></div>
+            <h2 class="post-title">正在读取文章列表</h2>
+            <p class="post-excerpt">如果长时间停留在这里，请检查 posts.json 是否存在。</p>
+          </article>
+        </section>
       </section>
     </main>
 
-    <footer class="site-footer v2-footer">
+    <footer class="site-footer">
       <div class="footer-line"></div>
       <p>no comments, no noise, only notes.</p>
     </footer>
@@ -74,4 +109,4 @@
 
   <script src="./app.js"></script>
 </body>
-            </html>
+</html>
