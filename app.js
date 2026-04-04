@@ -41,7 +41,7 @@
 
     if (!Array.isArray(posts) || !posts.length) {
       list.innerHTML = `
-        <article class="post-card">
+        <article class="post-card refined-card">
           <div class="post-meta">暂无文章</div>
           <h2 class="post-title">这里还没有任何记录</h2>
           <p class="post-excerpt">你可以先通过 editor.html 生成一篇文章，再上传到仓库中。</p>
@@ -51,7 +51,7 @@
     }
 
     list.innerHTML = posts.map(post => `
-      <article class="post-card">
+      <article class="post-card refined-card">
         <div class="post-meta">${escapeHtml(post.date || "")}</div>
         <h2 class="post-title">
           <a href="./${escapeHtml(post.file || "#")}">${escapeHtml(post.title || "未命名文章")}</a>
@@ -80,7 +80,7 @@
     } catch (err) {
       console.error(err);
       list.innerHTML = `
-        <article class="post-card">
+        <article class="post-card refined-card">
           <div class="post-meta">读取失败</div>
           <h2 class="post-title">无法加载文章列表</h2>
           <p class="post-excerpt">请确认 posts.json 已存在，且内容格式正确。</p>
