@@ -10,9 +10,9 @@
   ];
 const PLAYLIST = [
   {
-    title: "night fragment",
-    file: "./music/track1.mp3",
-    cover: "./music/cover1.jpg"
+    title: "青梦",
+    file: "./music/qingmeng.mp3",
+    cover: "./music/qingmeng.jpg"
   },
   {
     title: "violet margin",
