@@ -13,7 +13,7 @@
     {
       title: "青梦",
       file: "./music/qingmeng.mp3",
-      cover: "./music/qingmeng.jpg"
+      cover: "./music/qingmeng.jpeg"
     }
   ];
 
