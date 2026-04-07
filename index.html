@@ -17,6 +17,9 @@
           <option value="ink-night">墨蓝夜读</option>
           <option value="parchment">羊皮卷</option>
           <option value="violet-mist">鸢紫薄雾</option>
+          <option value="glass-candle">烛照</option>
+          <option value="glass-rain">听雨</option>
+          <option value="glass-bamboo">竹露</option>
         </select>
       </div>
 
@@ -30,8 +33,11 @@
           <h1 class="site-title">nobody's note</h1>
           <p class="site-subtitle">一些零散的记录与沉默的想法。</p>
 
-          <blockquote class="hero-quote" id="heroQuote">
-            写下来，不为解释，只为不忘。
+          <blockquote class="hero-quote">
+            <div class="quote-row">
+              <span class="quote-text" id="heroQuote">写下来，不为解释，只为不忘。</span>
+              <button class="quote-refresh" id="refreshQuoteBtn" title="换一句">↻</button>
+            </div>
           </blockquote>
 
           <div class="latest-card" id="latestPreview">
@@ -42,43 +48,45 @@
           </div>
 
           <div class="meta-strip" id="metaStrip">
-            <span class="meta-pill">收录：0 篇</span>
+            <span class="meta-pill">收录：0篇</span>
             <span class="meta-pill">最近更新：--</span>
           </div>
         </div>
 
         <aside class="hero-right">
-<section class="widget-card panel-surface player-widget">
-  <div class="widget-kicker">listening room</div>
+          <section class="widget-card panel-surface player-widget">
+            <div class="widget-kicker">listening room</div>
 
-  <div class="player-head">
-    <div>
-      <h3 class="widget-title">静听</h3>
-      <p class="player-status" id="playerStatus">当前未播放。</p>
-    </div>
-  </div>
+            <div class="player-head">
+              <div>
+                <h3 class="widget-title">静听</h3>
+                <p class="player-status" id="playerStatus">
+                  当前未播放。
+                </p>
+              </div>
+            </div>
 
-  <div class="disc-wrap">
-    <div class="disc" id="disc">
-      <div class="disc-ring"></div>
-      <img id="coverImage" class="cover-image" src="" alt="cover" />
-      <div class="disc-center"></div>
-    </div>
-  </div>
+            <div class="disc-wrap">
+              <div class="disc" id="disc">
+                <div class="disc-ring"></div>
+                <img id="coverImage" class="cover-image" src="" alt="cover" />
+                <div class="disc-center"></div>
+              </div>
+            </div>
 
-  <div class="music-meta">
-    <div class="track-name" id="trackName">请添加音乐文件</div>
-    <div class="track-sub" id="trackIndex">playlist 0 / 0</div>
-  </div>
+            <div class="music-meta">
+              <div class="track-name" id="trackName">请添加音乐文件</div>
+              <div class="track-sub" id="trackIndex">playlist0/ 0</div>
+            </div>
 
-  <audio id="bgPlayer" preload="metadata"></audio>
+            <audio id="bgPlayer" preload="metadata"></audio>
 
-  <div class="player-controls">
-    <button id="prevTrackBtn" class="ghost-btn">上一首</button>
-    <button id="togglePlayBtn" class="ghost-btn">播放</button>
-    <button id="nextTrackBtn" class="ghost-btn">下一首</button>
-  </div>
-</section>
+            <div class="player-controls">
+              <button id="prevTrackBtn" class="ghost-btn">上一首</button>
+              <button id="togglePlayBtn" class="ghost-btn">播放</button>
+              <button id="nextTrackBtn" class="ghost-btn">下一首</button>
+            </div>
+          </section>
 
           <section class="widget-card panel-surface jump-widget">
             <div class="widget-kicker">turn the page</div>
@@ -124,6 +132,8 @@
       <p>no comments, no noise, only notes.</p>
     </footer>
   </div>
+
+  <button class="back-top" id="backTopBtn" title="返回顶部">↑</button>
 
   <script src="./app.js"></script>
 </body>
