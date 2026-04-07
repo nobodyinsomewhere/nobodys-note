@@ -6,7 +6,10 @@
     "有些字不必说给谁听，留在纸面上就已经足够。",
     "深夜适合写字，不适合辩解。",
     "被记下来的东西，总比被说出口的更安静。",
-    "有些情绪适合沉下去，再变成文字。"
+    "有些情绪适合沉下去，再变成文字。",
+    "字不会替人辩解，但会替人留下痕迹。",
+    "不是写作比说话更高贵，只是有些东西更适合被轻轻放下。",
+    "风吹不走的，才写下来。"
   ];
 
   const PLAYLIST = [
@@ -24,12 +27,9 @@
   function applyTheme(theme) {
     const finalTheme = theme || "mist-cyan";
     document.documentElement.setAttribute("data-theme", finalTheme);
-
     try {
       localStorage.setItem(STORAGE_KEY, finalTheme);
-    } catch {}
-
-    const select = $("themeSelect");
+    } catch {}const select = $("themeSelect");
     if (select) {
       select.value = finalTheme;
     }
@@ -40,10 +40,7 @@
     try {
       savedTheme = localStorage.getItem(STORAGE_KEY) || "mist-cyan";
     } catch {}
-
-    applyTheme(savedTheme);
-
-    const select = $("themeSelect");
+    applyTheme(savedTheme);const select = $("themeSelect");
     if (select) {
       select.addEventListener("change", () => {
         applyTheme(select.value);
@@ -68,17 +65,23 @@
     if (!box) return;
     const quote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
     box.textContent = quote;
+
+    const refreshBtn = $("refreshQuoteBtn");
+    if (refreshBtn) {
+      refreshBtn.addEventListener("click", () => {
+        const newQuote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+        box.textContent = newQuote;
+      });
+    }
   }
 
   function renderLatest(posts) {
     const box = $("latestPreview");
     if (!box || !Array.isArray(posts) || !posts.length) return;
-
     const latest = posts[0];
     box.innerHTML = `
       <div class="latest-kicker">最近更新</div>
-      <h2 class="latest-title">
-        <a href="./${escapeHtml(latest.file)}">${escapeHtml(latest.title)}</a>
+      <h2 class="latest-title"><a href="./${escapeHtml(latest.file)}">${escapeHtml(latest.title)}</a>
       </h2>
       <p class="latest-date">${escapeHtml(latest.date || "")}</p>
       <p class="latest-excerpt">${escapeHtml(latest.excerpt || "")}</p>
@@ -89,10 +92,8 @@
   function renderMetaStrip(posts) {
     const box = $("metaStrip");
     if (!box || !Array.isArray(posts)) return;
-
     const count = posts.length;
     const latestDate = posts[0]?.date || "--";
-
     box.innerHTML = `
       <span class="meta-pill">收录：${count} 篇</span>
       <span class="meta-pill">最近更新：${escapeHtml(latestDate)}</span>
@@ -102,7 +103,6 @@
   function renderPosts(posts) {
     const list = $("postList");
     if (!list) return;
-
     if (!Array.isArray(posts) || !posts.length) {
       list.innerHTML = `
         <article class="post-card">
@@ -117,7 +117,6 @@
       `;
       return;
     }
-
     list.innerHTML = posts.map((post, index) => `
       <article class="post-card">
         <div class="post-card-head">
@@ -137,14 +136,12 @@
   function bindHomeActions(posts) {
     const latestBtn = $("latestJumpBtn");
     const randomBtn = $("randomJumpBtn");
-
     if (latestBtn) {
       latestBtn.addEventListener("click", () => {
         if (!posts?.length) return;
         window.location.href = `./${posts[0].file}`;
       });
     }
-
     if (randomBtn) {
       randomBtn.addEventListener("click", () => {
         if (!posts?.length) return;
@@ -174,16 +171,14 @@
     function renderTrackInfo() {
       if (!PLAYLIST.length) {
         trackName.textContent = "暂无音乐";
-        trackIndex.textContent = "playlist 0 / 0";
+        trackIndex.textContent = "playlist0 / 0";
         disc.classList.remove("has-cover");
         coverImage.removeAttribute("src");
         return;
       }
-
       const current = PLAYLIST[currentIndex];
       trackName.textContent = current?.title || "未命名音轨";
       trackIndex.textContent = `playlist ${currentIndex + 1} / ${PLAYLIST.length}`;
-
       if (current?.cover) {
         coverImage.src = current.cover;
         disc.classList.add("has-cover");
@@ -205,17 +200,15 @@
 
     async function togglePlay() {
       if (!PLAYLIST.length) return;
-
       if (!audio.src) {
         loadTrack(currentIndex);
       }
-
       if (audio.paused) {
         try {
           await audio.play();
         } catch (err) {
           console.error(err);
-          playerStatus.textContent = "浏览器拦截了播放，请再点一次。";
+          playerStatus.textContent = "请再次点击播放。";
         }
       } else {
         audio.pause();
@@ -224,16 +217,12 @@
 
     prevBtn.addEventListener("click", () => {
       loadTrack(currentIndex - 1);
-      audio.play().catch(() => {
-        playerStatus.textContent = "未自动播放，可手动点击播放。";
-      });
+      playerStatus.textContent = "已切换，请点击播放。";
     });
 
     nextBtn.addEventListener("click", () => {
       loadTrack(currentIndex + 1);
-      audio.play().catch(() => {
-        playerStatus.textContent = "未自动播放，可手动点击播放。";
-      });
+      playerStatus.textContent = "已切换，请点击播放。";
     });
 
     toggleBtn.addEventListener("click", togglePlay);
@@ -255,13 +244,11 @@
     audio.addEventListener("ended", () => {
       disc.classList.remove("spinning");
       loadTrack(currentIndex + 1);
-      audio.play().catch(() => {
-        playerStatus.textContent = "已切到下一首，请手动播放。";
-      });
+      playerStatus.textContent = "已切到下一首，请点击播放。";
     });
 
     audio.addEventListener("error", () => {
-      playerStatus.textContent = "未找到音乐文件或封面，请检查 music 文件夹与文件名。";
+      playerStatus.textContent = "未找到音乐文件，请检查 music 文件夹。";
       toggleBtn.textContent = "播放";
       disc.classList.remove("spinning");
     });
@@ -272,18 +259,14 @@
   function renderArticlePager(posts) {
     const pager = $("articlePager");
     if (!pager || !Array.isArray(posts) || !posts.length) return;
-
     const current = getCurrentFile();
     const index = posts.findIndex(item => item.file === current);
-
     if (index === -1) {
       pager.innerHTML = "";
       return;
     }
-
     const prev = posts[index - 1] || null;
     const next = posts[index + 1] || null;
-
     pager.innerHTML = `
       ${
         prev
@@ -296,7 +279,6 @@
               <span class="pager-empty">已经是最新一篇</span>
             </div>`
       }
-
       ${
         next
           ? `<a class="pager-card" href="./${escapeHtml(next.file)}">
@@ -311,24 +293,43 @@
     `;
   }
 
+  function initReadingBar() {
+    const bar = $("readingBar");
+    if (!bar) return;
+    window.addEventListener("scroll", () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      bar.style.width = progress + "%";
+    });
+  }
+
+  function initBackTop() {
+    const btn = $("backTopBtn");
+    if (!btn) return;
+    window.addEventListener("scroll", () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      btn.classList.toggle("visible", scrollTop > 300);
+    });
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
   async function loadPosts() {
     try {
       const res = await fetch("./posts.json", { cache: "no-store" });
       if (!res.ok) {
         throw new Error("posts.json 加载失败");
       }
-
       const posts = await res.json();
-
       renderQuote();
       renderLatest(posts);
       renderMetaStrip(posts);
       renderPosts(posts);
       bindHomeActions(posts);
-      renderArticlePager(posts);
-    } catch (err) {
+      renderArticlePager(posts);} catch (err) {
       console.error(err);
-
       const list = $("postList");
       if (list) {
         list.innerHTML = `
@@ -343,7 +344,6 @@
           </article>
         `;
       }
-
       const latest = $("latestPreview");
       if (latest) {
         latest.innerHTML = `
@@ -359,6 +359,8 @@
   async function init() {
     initTheme();
     initMusic();
+    initReadingBar();
+    initBackTop();
     await loadPosts();
   }
 
