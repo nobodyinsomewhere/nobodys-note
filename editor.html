@@ -9,61 +9,268 @@
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
     :root{
-      --bg:#e8efef;--bg2:#f7fbfb;--paper:#fafcfb;--paper-soft:#f1f6f5;
-      --glass:rgba(250,252,251,.68);--line:#d3dddd;--text:#24373a;--muted:#6f8587;
-      --title:#203235;--shadow:0 18px 40px rgba(90,120,120,.09);
-      --accent:#59797b;--accent-soft:#dce8e7;
+      --bg:#e8efef;
+      --bg2:#f7fbfb;
+      --paper:#fafcfb;
+      --paper-soft:#f1f6f5;
+      --glass:rgba(250,252,251,.68);
+      --line:#d3dddd;
+      --text:#24373a;
+      --muted:#6f8587;
+      --title:#203235;
+      --shadow:0 18px 40px rgba(90,120,120,.09);
+      --accent:#59797b;
+      --accent-soft:#dce8e7;
       --ui-font:ui-sans-serif,system-ui,-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
     }
-    html[data-theme="moon-paper"]{--bg:#f2f4f5;--bg2:#fafbfb;--paper:#fdfdfd;--paper-soft:#f7f8f9;--glass:rgba(255,255,255,.70);--line:#dfe4e6;--text:#2a3338;--muted:#7a8489;--title:#202a2f;--shadow:0 18px 40px rgba(120,130,135,.08);--accent:#677a83;--accent-soft:#e5eaed}
-    html[data-theme="mist-cyan"]{--bg:#e8efef;--bg2:#f7fbfb;--paper:#fafcfb;--paper-soft:#f1f6f5;--glass:rgba(250,252,251,.68);--line:#d3dddd;--text:#24373a;--muted:#6f8587;--title:#203235;--shadow:0 18px 40px rgba(90,120,120,.09);--accent:#59797b;--accent-soft:#dce8e7}
-    html[data-theme="ink-night"]{--bg:#1d2530;--bg2:#2a3440;--paper:#28313d;--paper-soft:#313b48;--glass:rgba(40,49,61,.78);--line:#44515e;--text:#dce5ea;--muted:#96a7b2;--title:#edf3f6;--shadow:0 18px 40px rgba(7,13,18,.32);--accent:#9db7c3;--accent-soft:#34404c}
-    html[data-theme="parchment"]{--bg:#f5ecda;--bg2:#faf5ea;--paper:#fffaf0;--paper-soft:#f6efe0;--glass:rgba(255,250,240,.78);--line:#e0d3b8;--text:#4a3c2a;--muted:#8a7558;--title:#3e3020;--shadow:0 18px 40px rgba(148,124,88,.10);--accent:#8a6d4e;--accent-soft:#f1e4cf}
-    html[data-theme="violet-mist"]{--bg:#efeaf7;--bg2:#faf8fd;--paper:#fbf9ff;--paper-soft:#f4effb;--glass:rgba(251,249,255,.64);--line:#ddd3ec;--text:#342d45;--muted:#7e7594;--title:#2d2540;--shadow:0 18px 40px rgba(112,94,145,.12);--accent:#7b6a99;--accent-soft:#ebe3f8}
-    html[data-theme="glass-candle"]{--bg:#2a2118;--bg2:#352a1f;--paper:#3a2f24;--paper-soft:#443628;--glass:rgba(58,47,36,.80);--line:#5c4a38;--text:#f0e4d4;--muted:#bba88e;--title:#ffecd0;--shadow:0 18px 40px rgba(20,14,8,.36);--accent:#e6a24b;--accent-soft:#4a3825}
-    html[data-theme="glass-rain"]{--bg:#2c3440;--bg2:#353e4c;--paper:#313a48;--paper-soft:#3a4452;--glass:rgba(49,58,72,.80);--line:#4e5a6a;--text:#d8e2ea;--muted:#94a4b2;--title:#e8f0f6;--shadow:0 18px 40px rgba(12,18,26,.34);--accent:#7899aa;--accent-soft:#3a4654}
-    html[data-theme="glass-bamboo"]{--bg:#e6ece6;--bg2:#f4f8f4;--paper:#f7faf6;--paper-soft:#edf2ec;--glass:rgba(247,250,246,.70);--line:#cfd9cf;--text:#243028;--muted:#6a7e6e;--title:#1e3024;--shadow:0 18px 40px rgba(68,96,76,.10);--accent:#4a7a56;--accent-soft:#d6e5d8}
+
+    html[data-theme="moon-paper"]{
+      --bg:#f2f4f5;--bg2:#fafbfb;--paper:#fdfdfd;--paper-soft:#f7f8f9;--glass:rgba(255,255,255,.72);--line:#dfe4e6;--text:#2a3338;--muted:#7a8489;--title:#202a2f;--shadow:0 18px 40px rgba(120,130,135,.08);--accent:#677a83;--accent-soft:#e5eaed;
+    }
+
+    html[data-theme="mist-cyan"]{
+      --bg:#e8efef;--bg2:#f7fbfb;--paper:#fafcfb;--paper-soft:#f1f6f5;--glass:rgba(250,252,251,.68);--line:#d3dddd;--text:#24373a;--muted:#6f8587;--title:#203235;--shadow:0 18px 40px rgba(90,120,120,.09);--accent:#59797b;--accent-soft:#dce8e7;
+    }
+
+    html[data-theme="ink-night"]{
+      --bg:#1d2530;--bg2:#2a3440;--paper:#28313d;--paper-soft:#313b48;--glass:rgba(40,49,61,.78);--line:#44515e;--text:#dce5ea;--muted:#96a7b2;--title:#edf3f6;--shadow:0 18px 40px rgba(7,13,18,.32);--accent:#9db7c3;--accent-soft:#34404c;
+    }
+
+    html[data-theme="parchment"]{
+      --bg:#f5ecda;--bg2:#faf5ea;--paper:#fffaf0;--paper-soft:#f6efe0;--glass:rgba(255,250,240,.78);--line:#e0d3b8;--text:#4a3c2a;--muted:#8a7558;--title:#3e3020;--shadow:0 18px 40px rgba(148,124,88,.10);--accent:#8a6d4e;--accent-soft:#f1e4cf;
+    }
+
+    html[data-theme="violet-mist"]{
+      --bg:#efeaf7;--bg2:#faf8fd;--paper:#fbf9ff;--paper-soft:#f4effb;--glass:rgba(251,249,255,.64);--line:#ddd3ec;--text:#342d45;--muted:#7e7594;--title:#2d2540;--shadow:0 18px 40px rgba(112,94,145,.12);--accent:#7b6a99;--accent-soft:#ebe3f8;
+    }
+
+    html[data-theme="clear-blue"]{
+      --bg:#eaf4ff;--bg2:#f8fcff;--paper:#fbfdff;--paper-soft:#f1f7fc;--glass:rgba(251,253,255,.72);--line:#d7e5f1;--text:#23384a;--muted:#6e879c;--title:#21384f;--shadow:0 18px 40px rgba(104,148,186,.10);--accent:#6da9d8;--accent-soft:#dcecf8;
+    }
+
+    html[data-theme="rose-ash"]{
+      --bg:#f6eef1;--bg2:#fbf8f9;--paper:#fffafb;--paper-soft:#f8eff2;--glass:rgba(255,250,251,.74);--line:#e7d8de;--text:#4a3138;--muted:#8f717a;--title:#412830;--shadow:0 18px 40px rgba(152,108,122,.10);--accent:#b77987;--accent-soft:#f0dfe4;
+    }
 
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;color:var(--text);background:radial-gradient(circle at 10% 12%,rgba(255,255,255,.55),transparent 18%),linear-gradient(180deg,var(--bg),var(--bg2));font-family:"STFangsong","FangSong","Songti SC","Noto Serif SC","Source Han Serif SC",serif}
 
-    .wrap{max-width:1280px;margin:0 auto;padding:26px 18px 42px}
+    html,body{
+      margin:0;
+      padding:0;
+      color:var(--text);
+      background:radial-gradient(circle at 10% 12%,rgba(255,255,255,.55),transparent 18%),linear-gradient(180deg,var(--bg),var(--bg2));
+      font-family:"STFangsong","FangSong","Songti SC","Noto Serif SC","Source Han Serif SC",serif;
+    }
 
-    .hero{position:relative;margin-bottom:20px}
-    .theme-corner{position:absolute;top:0;right:0;z-index:5}
-    .theme-corner select{min-width:112px;width:auto;padding:7px 10px;font-size:11px;border-radius:999px;border:1px solid var(--line);background:var(--glass);color:var(--muted);outline:none;box-shadow:var(--shadow);font-family:var(--ui-font);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+    .wrap{
+      max-width:1280px;
+      margin:0 auto;
+      padding:26px 18px 42px;
+    }
 
-    .hero-card,.panel{background:var(--glass);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-    .hero-card{padding:24px 24px 22px}
+    .hero{
+      position:relative;
+      margin-bottom:20px;
+    }
 
-    .eyebrow{display:inline-flex;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--paper-soft);color:var(--muted);font-size:12px;letter-spacing:.10em;text-transform:uppercase;font-family:var(--ui-font)}
-    .title{margin:14px 0 0;font-family:"Cormorant Garamond",Georgia,serif;font-size:46px;font-weight:600;line-height:1.02;color:var(--title)}
-    .sub{margin:12px 0 0;font-size:16px;line-height:1.8;color:var(--text);max-width:780px}
+    .theme-corner{
+      position:absolute;
+      top:0;
+      right:0;
+      z-index:5;
+    }
 
-    .layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .panel-hd{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;align-items:flex-end;flex-wrap:wrap}
-    .panel-hd h2{margin:0;font-size:18px;font-weight:500;color:var(--title)}
-    .panel-hd p{margin:6px 0 0;color:var(--muted);font-size:13px;font-family:var(--ui-font)}
-    .panel-bd{padding:18px}
+    .theme-corner select{
+      min-width:112px;
+      width:auto;
+      padding:7px 10px;
+      font-size:11px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--glass);
+      color:var(--muted);
+      outline:none;
+      box-shadow:var(--shadow);
+      font-family:var(--ui-font);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
 
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .hero-card,.panel{
+      background:var(--glass);
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
+
+    .hero-card{
+      padding:24px 24px 22px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--paper-soft);
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      font-family:var(--ui-font);
+    }
+
+    .title{
+      margin:14px 0 0;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:46px;
+      font-weight:600;
+      line-height:1.02;
+      color:var(--title);
+    }
+
+    .sub{
+      margin:12px 0 0;
+      font-size:16px;
+      line-height:1.8;
+      color:var(--text);
+      max-width:780px;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .panel-hd{
+      padding:16px 18px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-end;
+      flex-wrap:wrap;
+    }
+
+    .panel-hd h2{
+      margin:0;
+      font-size:18px;
+      font-weight:500;
+      color:var(--title);
+    }
+
+    .panel-hd p{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      font-family:var(--ui-font);
+    }
+
+    .panel-bd{
+      padding:18px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
     .full{grid-column:1/-1}
 
-    label{display:block;margin-bottom:6px;color:var(--muted);font-size:13px;font-family:var(--ui-font);letter-spacing:.04em}
-    input,textarea{width:100%;border:1px solid var(--line);background:var(--paper-soft);color:var(--text);border-radius:14px;padding:11px 12px;font:inherit;outline:none}
-    textarea{resize:vertical;min-height:120px;line-height:1.85}
+    label{
+      display:block;
+      margin-bottom:6px;
+      color:var(--muted);
+      font-size:13px;
+      font-family:var(--ui-font);
+      letter-spacing:.04em;
+    }
 
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-    button{cursor:pointer;border:none;border-radius:12px;padding:10px 14px;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent-soft));font:inherit;font-family:var(--ui-font)}
-    button.secondary{background:var(--paper-soft);color:var(--text);border:1px solid var(--line)}
+    input,textarea{
+      width:100%;
+      border:1px solid var(--line);
+      background:var(--paper-soft);
+      color:var(--text);
+      border-radius:14px;
+      padding:11px 12px;
+      font:inherit;
+      outline:none;
+    }
 
-    .hint{margin-top:12px;color:var(--muted);font-size:13px;line-height:1.75;font-family:var(--ui-font)}
-    .hint code{background:var(--paper-soft);border:1px solid var(--line);border-radius:6px;padding:2px 6px;font-size:12px}
+    textarea{
+      resize:vertical;
+      min-height:120px;
+      line-height:1.85;
+    }
 
-    pre{margin:0;white-space:pre-wrap;word-break:break-word;background:var(--paper-soft);border:1px solid var(--line);border-radius:14px;padding:14px;font-size:13px;line-height:1.75;overflow:auto;min-height:250px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:16px;
+    }
 
-    @media (max-width:980px){.layout{grid-template-columns:1fr}}
-    @media (max-width:720px){.wrap{padding:22px 14px 34px}.grid{grid-template-columns:1fr}.title{font-size:36px}}
+    button{
+      cursor:pointer;
+      border:none;
+      border-radius:12px;
+      padding:10px 14px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--accent),var(--accent-soft));
+      font:inherit;
+      font-family:var(--ui-font);
+    }
+
+    button.secondary{
+      background:var(--paper-soft);
+      color:var(--text);
+      border:1px solid var(--line);
+    }
+
+    .hint{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.75;
+      font-family:var(--ui-font);
+    }
+
+    .hint code{
+      background:var(--paper-soft);
+      border:1px solid var(--line);
+      border-radius:6px;
+      padding:2px 6px;
+      font-size:12px;
+    }
+
+    pre{
+      margin:0;
+      white-space:pre-wrap;
+      word-break:break-word;
+      background:var(--paper-soft);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      font-size:13px;
+      line-height:1.75;
+      overflow:auto;
+      min-height:250px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    }
+
+    @media (max-width:980px){
+      .layout{grid-template-columns:1fr}
+    }
+
+    @media (max-width:720px){
+      .wrap{padding:22px 14px 34px}
+      .grid{grid-template-columns:1fr}
+      .title{font-size:36px}
+    }
   </style>
 </head>
 <body>
@@ -74,11 +281,10 @@
           <option value="moon-paper">月白纸页</option>
           <option value="mist-cyan">雾青札记</option>
           <option value="ink-night">墨蓝夜读</option>
-          <option value="parchment">羊皮卷</option>
+          <option value="parchment">羊皮旧卷</option>
           <option value="violet-mist">鸢紫薄雾</option>
-          <option value="glass-candle">烛照</option>
-          <option value="glass-rain">听雨</option>
-          <option value="glass-bamboo">竹露</option>
+          <option value="clear-blue">晴川映水</option>
+          <option value="rose-ash">绛雪残笺</option>
         </select>
       </div>
 
@@ -98,7 +304,8 @@
           <div>
             <h2>写作区</h2>
             <p>写完后会生成文章页 HTML 与新的 posts.json。</p>
-          </div></div>
+          </div>
+        </div>
 
         <div class="panel-bd">
           <div class="grid">
@@ -134,7 +341,7 @@
           </div>
 
           <div class="actions">
-            <button id="generateBtn">生成文章与posts.json</button>
+            <button id="generateBtn">生成文章与 posts.json</button>
             <button class="secondary" id="copyArticleBtn">复制文章 HTML</button>
             <button class="secondary" id="downloadArticleBtn">下载文章 HTML</button>
             <button class="secondary" id="copyPostsBtn">复制 posts.json</button>
@@ -144,7 +351,7 @@
           <div class="hint">
             正文支持以下格式：<br>
             · 段落之间空一行<br>
-            ·<code>img:./images/photo.jpg</code> 插入图片<br>
+            · <code>img:./images/photo.jpg</code> 插入图片<br>
             · <code>---</code> 插入分割线<br>
             · <code>## 小标题</code> 插入二级标题<br>
             · <code>### 小标题</code> 插入三级标题<br>
@@ -187,15 +394,22 @@
 
     function initTheme() {
       const saved = localStorage.getItem(STORAGE_KEY) || "mist-cyan";
-      applyTheme(saved);$("themeSelect").addEventListener("change", () => applyTheme($("themeSelect").value));
+      applyTheme(saved);
+      $("themeSelect").addEventListener("change", () => applyTheme($("themeSelect").value));
     }
 
     function escapeHtml(str = "") {
-      return str.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+      return str
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
     }
 
     function splitParagraphs(text) {
-      return String(text).split(/\n\s*\n/g).map(s => s.trim()).filter(Boolean);
+      return String(text)
+        .split(/\n\s*\n/g)
+        .map(s => s.trim())
+        .filter(Boolean);
     }
 
     function safeJsonParse(text, fallback = null) {
@@ -353,17 +567,30 @@ ${bodyHtml}
       const bodyParagraphs = splitParagraphs(body);
       const articleHtml = buildArticleHtml({ title, date, theme, bodyParagraphs });
 
-      const newItem = { title, date, excerpt, file: fileName };
-      const nextPosts = [newItem, ...currentPosts.filter(item => item.file !== fileName)];
+      const newItem = {
+        title,
+        date,
+        excerpt,
+        file: fileName
+      };
+
+      const nextPosts = [
+        newItem,
+        ...currentPosts.filter(item => item.file !== fileName)
+      ];
 
       $("articleOutput").textContent = articleHtml;
-      $("postsOutput").textContent = JSON.stringify(nextPosts, null, 2);}
+      $("postsOutput").textContent = JSON.stringify(nextPosts, null, 2);
+    }
 
     $("generateBtn").addEventListener("click", generate);
 
     $("copyArticleBtn").addEventListener("click", async () => {
       const text = $("articleOutput").textContent.trim();
-      if (!text) { alert("请先生成文章 HTML。"); return; }
+      if (!text) {
+        alert("请先生成文章 HTML。");
+        return;
+      }
       await copyText(text);
       alert("文章 HTML 已复制。");
     });
@@ -371,21 +598,35 @@ ${bodyHtml}
     $("downloadArticleBtn").addEventListener("click", () => {
       const text = $("articleOutput").textContent.trim();
       const fn = $("fileName").value.trim();
-      if (!text) { alert("请先生成文章 HTML。"); return; }
-      if (!fn) { alert("请先填写文章文件名。"); return; }
+
+      if (!text) {
+        alert("请先生成文章 HTML。");
+        return;
+      }
+      if (!fn) {
+        alert("请先填写文章文件名。");
+        return;
+      }
+
       download(fn, text, "text/html;charset=utf-8");
     });
 
     $("copyPostsBtn").addEventListener("click", async () => {
       const text = $("postsOutput").textContent.trim();
-      if (!text) { alert("请先生成posts.json。"); return; }
+      if (!text) {
+        alert("请先生成 posts.json。");
+        return;
+      }
       await copyText(text);
       alert("posts.json 已复制。");
     });
 
     $("downloadPostsBtn").addEventListener("click", () => {
       const text = $("postsOutput").textContent.trim();
-      if (!text) { alert("请先生成 posts.json。"); return; }
+      if (!text) {
+        alert("请先生成 posts.json。");
+        return;
+      }
       download("posts.json", text, "application/json;charset=utf-8");
     });
 
