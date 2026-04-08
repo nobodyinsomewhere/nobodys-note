@@ -12,13 +12,7 @@
     "风吹不走的，才写下来。"
   ];
 
-  const PLAYLIST = [
-    {
-      title: "青梦",
-      file: "./music/qingmeng.mp3",
-      cover: "./music/qingmeng.jpeg"
-    }
-  ];
+  let PLAYLIST = [];
 
   function $(id) {
     return document.getElementById(id);
@@ -27,6 +21,7 @@
   function applyTheme(theme) {
     const finalTheme = theme || "mist-cyan";
     document.documentElement.setAttribute("data-theme", finalTheme);
+
     try {
       localStorage.setItem(STORAGE_KEY, finalTheme);
     } catch {}
@@ -38,10 +33,15 @@
   }
 
   function initTheme() {
-    let savedTheme = "mist-cyan";
+    let savedTheme = null;
     try {
-      savedTheme = localStorage.getItem(STORAGE_KEY) || "mist-cyan";
+      savedTheme = localStorage.getItem(STORAGE_KEY);
     } catch {}
+
+    if (!savedTheme) {
+      const hour = new Date().getHours();
+      savedTheme = (hour >= 22 || hour < 6) ? "ink-night" : "mist-cyan";
+    }
 
     applyTheme(savedTheme);
 
@@ -50,6 +50,17 @@
       select.addEventListener("change", () => {
         applyTheme(select.value);
       });
+    }
+  }
+
+  async function loadPlaylist() {
+    try {
+      const res = await fetch("./playlist.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("playlist.json 加载失败");
+      PLAYLIST = await res.json();
+    } catch (err) {
+      console.error(err);
+      PLAYLIST = [];
     }
   }
 
@@ -389,6 +400,7 @@
 
   async function init() {
     initTheme();
+    await loadPlaylist();
     initMusic();
     initReadingBar();
     initBackTop();
