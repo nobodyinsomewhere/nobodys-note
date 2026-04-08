@@ -1095,3 +1095,132 @@ a.pager-card:hover{
     font-size:28px;
   }
 }
+/* ===== mobile player refine patch ===== */
+
+@media (max-width: 920px){
+  .home-top{
+    grid-template-columns: 1fr;
+  }
+
+  .hero-right{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 620px){
+  .site-wrap{
+    padding-top: 42px;
+  }
+
+  .hero-right{
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .widget-card{
+    min-height: 210px;
+    padding: 14px;
+  }
+
+  .player-widget{
+    padding: 14px;
+  }
+
+  .disc{
+    width: 120px;
+    height: 120px;
+  }
+
+  .disc-center{
+    width: 12px;
+    height: 12px;
+  }
+
+  .track-name{
+    font-size: 15px;
+  }
+
+  .track-sub{
+    font-size: 11px;
+  }
+
+  .player-status{
+    font-size: 12px;
+  }
+
+  .music-meta{
+    margin-top: 10px;
+  }
+
+  .disc-wrap{
+    margin-top: 10px;
+  }
+
+  .player-controls{
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .player-controls .ghost-btn{
+    padding: 8px 10px;
+    font-size: 13px;
+    min-width: 60px;
+  }
+
+  .widget-title{
+    font-size: 18px;
+  }
+
+  .widget-kicker{
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px){
+  .theme-corner{
+    top: -2px;
+    right: 0;
+  }
+
+  .theme-corner select{
+    min-width: 100px;
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  .hero-right{
+    grid-template-columns: 1fr;
+  }
+
+  .widget-card{
+    min-height: auto;
+  }
+
+  .disc{
+    width: 112px;
+    height: 112px;
+  }
+
+  .player-controls{
+    flex-wrap: nowrap;
+  }
+
+  .player-controls .ghost-btn{
+    flex: 1;
+    min-width: 0;
+  }
+
+  .track-name{
+    font-size: 14px;
+  }
+
+  .site-title{
+    font-size: 38px;
+  }
+
+  .section-title{
+    font-size: 22px;
+  }
+}
